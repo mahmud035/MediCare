@@ -3,7 +3,10 @@ import app from '../../firebase config/firebase.config';
 
 import {
   createUserWithEmailAndPassword,
+  getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
