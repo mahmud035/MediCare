@@ -20,7 +20,7 @@ const Navigation = () => {
     <Navbar collapseOnSelect expand="lg" className="py-4 navbar-container">
       <Container>
         <Link to="/" className="navbar-logo">
-          <Navbar.Brand className="fs-4 text-white">Task Manager</Navbar.Brand>
+          <Navbar.Brand className="fs-4 text-white">MEDICARE</Navbar.Brand>
         </Link>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -29,10 +29,8 @@ const Navigation = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           {user?.email && (
             <Nav className="mx-auto pt-4 pt-lg-0 nav-items">
-              <NavLink to="/addtask">Add Task</NavLink>
-              <NavLink to="/mytask">My Tasks</NavLink>
-              <NavLink to="/completedtask">Completed Tasks</NavLink>
-              <NavLink to="/notcompletedtask">Incomplete Tasks</NavLink>
+              <NavLink to="/addrecord">Add New Patient Record</NavLink>
+              <NavLink to="/allrecord">All Patient Record</NavLink>
             </Nav>
           )}
 

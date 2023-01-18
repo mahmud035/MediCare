@@ -1,4 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
+import AddRecord from '../../components/AddRecord/AddRecord';
+import AllRecord from '../../components/AllRecord/AllRecord';
 import Home from '../../components/Home/Home/Home';
 import Register from '../../components/Register/Register';
 import SignIn from '../../components/SignIn/SignIn';
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/addrecord',
+        element: <AddRecord />,
+      },
+      {
+        path: '/allrecord',
+        element: <AllRecord />,
       },
       {
         path: '/register',
