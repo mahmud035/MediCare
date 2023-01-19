@@ -37,13 +37,15 @@ const router = createBrowserRouter([
         path: '/updateRecord/:id',
         element: <UpdatePatientRecord />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/records/${params.id}`),
+          fetch(`https://medicare-server.vercel.app/records/${params.id}`),
       },
       {
         path: '/patientDetails/:id',
         element: <PatientRecordDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/specificRecord/${params.id}`),
+          fetch(
+            `https://medicare-server.vercel.app/specificRecord/${params.id}`
+          ),
       },
     ],
   },

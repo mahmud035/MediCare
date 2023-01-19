@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
@@ -9,6 +9,10 @@ import './PatientRecordDetails.css';
 const PatientRecordDetails = () => {
   const record = useLoaderData();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     _id,
@@ -27,7 +31,7 @@ const PatientRecordDetails = () => {
     const agree = window.confirm('Are you sure you want to delete the record?');
 
     if (agree) {
-      fetch(`http://localhost:5000/records/${id}`, {
+      fetch(`https://medicare-server.vercel.app/records/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())

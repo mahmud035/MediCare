@@ -45,7 +45,7 @@ const UpdatePatientRecord = () => {
 
     // console.log(updateRecord);
 
-    fetch(`http://localhost:5000/records/${_id}`, {
+    fetch(`https://medicare-server.vercel.app/records/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -71,7 +71,11 @@ const UpdatePatientRecord = () => {
       <h2 className="text-center py-4">
         Update {patientName}'s Medical Record
       </h2>
-      <div className="container new-record-form-container">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        className="container new-record-form-container"
+      >
         <Form onSubmit={handleSubmit(handleUpdateRecord)}>
           <Row className="mb-3 row-cols-1 row-cols-md-2">
             <Col className="mb-3 mb-md-0">

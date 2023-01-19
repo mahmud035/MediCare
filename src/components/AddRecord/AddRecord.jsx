@@ -35,7 +35,7 @@ const AddRecord = () => {
 
     // console.log(patientRecordObj);
 
-    fetch('http://localhost:5000/records', {
+    fetch('https://medicare-server.vercel.app/records', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -54,7 +54,11 @@ const AddRecord = () => {
   return (
     <div className="add-new-record-page">
       <h2 className="text-center py-4">Add A New Patient Record</h2>
-      <div className="container new-record-form-container">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        className="container new-record-form-container"
+      >
         <Form onSubmit={handleSubmit(handleAddTasks)}>
           <Row className="mb-3 row-cols-1 row-cols-md-2">
             <Col className="mb-3 mb-md-0">

@@ -8,16 +8,8 @@ import { toast } from 'react-toastify';
 import './PatientRecordCard.css';
 
 const PatientRecordCard = ({ record, refetch }) => {
-  const {
-    _id,
-    age,
-    bloodPressure,
-    diseaseName,
-    nextAppointment,
-    patientName,
-    phoneNumber,
-    treatment,
-  } = record;
+  const { _id, age, diseaseName, nextAppointment, patientName, treatment } =
+    record;
 
   const handleDeleteRecord = (id) => {
     console.log(id);
@@ -25,7 +17,7 @@ const PatientRecordCard = ({ record, refetch }) => {
     const agree = window.confirm('Are you sure you want to delete the record?');
 
     if (agree) {
-      fetch(`http://localhost:5000/records/${id}`, {
+      fetch(`https://medicare-server.vercel.app/records/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())
