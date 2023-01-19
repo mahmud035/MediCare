@@ -1,10 +1,13 @@
-import React from 'react';
-import './AddRecord.css';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import './AddRecord.css';
 
 const AddRecord = () => {
   const {
@@ -13,8 +16,39 @@ const AddRecord = () => {
     handleSubmit,
   } = useForm();
 
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleAddTasks = (data) => {
-    console.log(data);
+    // console.log(data);
+
+    const patientRecordObj = {
+      patientName: data.patientName,
+      age: data.age,
+      bloodPressure: data.bloodPressure,
+      phoneNumber: data.phoneNumber,
+      diseaseName: data.diseaseName,
+      treatment: data.treatment,
+      nextAppointment: data.nextAppointment,
+      doctorEmail: user?.email,
+    };
+
+    // console.log(patientRecordObj);
+
+    fetch('http://localhost:5000/records', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(patientRecordObj),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log('SavedRecord:', data);
+        toast.success('Added new patient record');
+
+        navigate('/allrecord');
+      });
   };
 
   return (
@@ -26,7 +60,7 @@ const AddRecord = () => {
             <Col className="mb-3 mb-md-0">
               <Form.Label className="fw-semibold">Patient Name</Form.Label>
               <Form.Control
-                {...register('age', {
+                {...register('patientName', {
                   required: 'Patient Name is required',
                 })}
                 type="text"
