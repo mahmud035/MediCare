@@ -8,6 +8,7 @@ import './AllRecord.css';
 const AllRecord = () => {
   const { user } = useContext(AuthContext);
   const url = `https://medicare-server.vercel.app/records?email=${user?.email}`;
+  // console.log(url);
 
   const {
     isLoading,

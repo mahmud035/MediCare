@@ -18,7 +18,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const handleSignIn = (data) => {
-    console.log(data);
+    // console.log(data);
 
     //* Sign In
     signIn(data.email, data.password)
