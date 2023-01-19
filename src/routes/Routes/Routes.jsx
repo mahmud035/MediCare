@@ -4,6 +4,7 @@ import AllRecord from '../../components/AllRecord/AllRecord';
 import Home from '../../components/Home/Home/Home';
 import Register from '../../components/Register/Register';
 import SignIn from '../../components/SignIn/SignIn';
+import UpdatePatientRecord from '../../components/UpdatePatientRecord/UpdatePatientRecord';
 import Main from '../../layout/Main';
 
 const router = createBrowserRouter([
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>,
+      },
+      {
+        path: '/updateRecord/:id',
+        element: <UpdatePatientRecord />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/records/${params.id}`),
       },
     ],
   },

@@ -54,7 +54,7 @@ const PatientRecordCard = ({ record, refetch }) => {
 
           <div className="icons-and-image-container">
             <div className="d-flex align-items-center gap-3">
-              <Link to={`/editTask/${_id}`}>
+              <Link to={`/updateRecord/${_id}`}>
                 <FaEdit
                   size={26}
                   style={{ cursor: 'pointer', color: '#439a97' }}
