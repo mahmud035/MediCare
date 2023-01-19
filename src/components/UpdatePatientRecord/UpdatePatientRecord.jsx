@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import './UpdatePatientRecord.css';
 
 const UpdatePatientRecord = () => {
   const record = useLoaderData();
-  console.log(record);
+  // console.log(record);
 
   const {
     register,
@@ -29,13 +30,49 @@ const UpdatePatientRecord = () => {
     treatment,
   } = record;
 
+  const handleUpdateRecord = (data) => {
+    // console.log(data);
+
+    const updateRecord = {
+      patientName: data.patientName,
+      age: data.age,
+      bloodPressure: data.bloodPressure,
+      phoneNumber: data.phoneNumber,
+      diseaseName: data.diseaseName,
+      treatment: data.treatment,
+      nextAppointment: data.nextAppointment,
+    };
+
+    // console.log(updateRecord);
+
+    fetch(`http://localhost:5000/records/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateRecord),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data?.modifiedCount > 0) {
+          toast.success('Record Updated Successfully');
+
+          navigate('/allrecord');
+        }
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="add-new-record-page">
       <h2 className="text-center py-4">
         Update {patientName}'s medical Record
       </h2>
       <div className="container new-record-form-container">
-        <Form onSubmit={handleSubmit()}>
+        <Form onSubmit={handleSubmit(handleUpdateRecord)}>
           <Row className="mb-3 row-cols-1 row-cols-md-2">
             <Col className="mb-3 mb-md-0">
               <Form.Label className="fw-semibold">Patient Name</Form.Label>
@@ -44,6 +81,7 @@ const UpdatePatientRecord = () => {
                   required: 'Patient Name is required',
                 })}
                 type="text"
+                defaultValue={patientName}
                 placeholder="John Smith"
               />
 
@@ -57,6 +95,7 @@ const UpdatePatientRecord = () => {
                   required: ' Age is required',
                 })}
                 type="number"
+                defaultValue={age}
                 placeholder="47"
               />
 
@@ -72,6 +111,7 @@ const UpdatePatientRecord = () => {
                   required: ' Blood Pressure is required',
                 })}
                 type="text"
+                defaultValue={bloodPressure}
                 placeholder="120/80"
               />
 
@@ -85,6 +125,7 @@ const UpdatePatientRecord = () => {
                   required: ' Phone number is required',
                 })}
                 type="number"
+                defaultValue={phoneNumber}
                 placeholder="+90 000 000 000"
               />
 
@@ -100,6 +141,7 @@ const UpdatePatientRecord = () => {
                   required: ' Disease name is required',
                 })}
                 type="text"
+                defaultValue={diseaseName}
                 placeholder="Flu, Diabetes, Arthritis "
               />
 
@@ -114,6 +156,7 @@ const UpdatePatientRecord = () => {
                 })}
                 as="textarea"
                 rows={3}
+                defaultValue={treatment}
                 placeholder="Short description about diseases..."
               />
 
@@ -129,6 +172,7 @@ const UpdatePatientRecord = () => {
                   required: ' Treatment description is required',
                 })}
                 type="date"
+                defaultValue={nextAppointment}
                 placeholder="Patient's disease name"
               />
 
