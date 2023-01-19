@@ -54,7 +54,7 @@ const UpdatePatientRecord = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data?.modifiedCount > 0) {
           toast.success('Record Updated Successfully');
 
@@ -69,7 +69,7 @@ const UpdatePatientRecord = () => {
   return (
     <div className="add-new-record-page">
       <h2 className="text-center py-4">
-        Update {patientName}'s medical Record
+        Update {patientName}'s Medical Record
       </h2>
       <div className="container new-record-form-container">
         <Form onSubmit={handleSubmit(handleUpdateRecord)}>

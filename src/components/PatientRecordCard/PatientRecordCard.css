@@ -1,3 +1,17 @@
 .record-card {
   background-color: #fafafa;
 }
+
+.see-more {
+  animation: see-more 5s linear infinite alternate;
+}
+
+@keyframes see-more {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}

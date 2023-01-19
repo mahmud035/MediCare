@@ -1,0 +1,16 @@
+.record-details-card {
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .record-details-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .record-details-card {
+    width: 90%;
+  }
+}
