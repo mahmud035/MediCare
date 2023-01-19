@@ -1,0 +1,10 @@
+.all-record-page {
+  background-color: #1a374d;
+  min-height: 100vh;
+}
+
+.patient-record-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.7rem;
+}
